@@ -1,37 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
-<head>
-<title th:text="${titulo}"></title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<head th:replace="layout/layout.html :: head">
 </head>
 <body>
-
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container-fluid">
-			<a class="navbar-brand" th:href="@{/}">Spring Boot</a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" th:href="@{/}">Inicio</a></li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Listar</a></li>
-					<li class="nav-item"><a class="nav-link" th:href="@{/form}">Nuevo Cliente</a></li>
-				</ul>
-				<form class="d-flex">
-					<input class="form-control me-2" type="search" placeholder="Buscar"
-						aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">Buscar</button>
-				</form>
-			</div>
-		</div>
-	</nav>
-
+	<header th:replace="layout/layout.html :: header"></header>
 
 	<div id="carouselExampleIndicators" class="carousel slide"
 		data-bs-ride="carousel">
@@ -67,10 +39,6 @@
 		</button>
 	</div>
 
-
-
-	<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
-	<script th:src="@{/js/popper.min.js}"></script>
-	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<div th:replace="layout/layout.html :: footer"></div>
 </body>
 </html>

@@ -1,13 +1,18 @@
 package com.isnaeky.demo.app.models.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -79,6 +84,15 @@ public class Cliente implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createAt;
 
+	@OneToMany(mappedBy = "cliente" ,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Factura> facturas;
+
+	public Cliente() {
+		facturas = new ArrayList<Factura>();
+	}
+
+	private String foto;
+
 	// Anotacion para ejecutar el metodo antes de la persistencia, justo antes de
 	// insertar los datos a la BD
 	/*
@@ -129,4 +143,30 @@ public class Cliente implements Serializable {
 		return serialVersionUID;
 	}
 
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public List<Factura> getFacturas() {
+		return facturas;
+	}
+
+	public void setFacturas(List<Factura> facturas) {
+		this.facturas = facturas;
+	}
+
+	public void addFactura(Factura factura) {
+		facturas.add(factura);
+	}
+
+	@Override
+	public String toString() {
+		return nombre + " " + apellido;
+	}
+	
+	
 }
